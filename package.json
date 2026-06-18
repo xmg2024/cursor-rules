@@ -1,0 +1,95 @@
+{
+  "name": "cursor-rules-huasheng",
+  "displayName": "Cursor Rules",
+  "description": "Cursor rules插件，自动帮你创建中文.cursorrules文件",
+  "version": "0.0.7",
+  "icon": "images/icon.png",
+  "author": {
+    "name": "xmg2024",
+    "url": "https://github.com/xmg2024"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cursor",
+    "ai",
+    "rules",
+    "productivity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xmg2024/cursor-rules.git"
+  },
+  "publisher": "xmg2024",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onCommand:cursor-rules.addRules",
+    "onCommand:cursor-rules.createRule",
+    "onCommand:cursor-rules.editRule",
+    "onCommand:cursor-rules.deleteRule"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursor-rules.addRules",
+        "title": "添加 Cursor 规则文件"
+      },
+      {
+        "command": "cursor-rules.createRule",
+        "title": "创建新的规则类型"
+      },
+      {
+        "command": "cursor-rules.editRule", 
+        "title": "编辑现有规则"
+      },
+      {
+        "command": "cursor-rules.deleteRule",
+        "title": "删除规则类型"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "cursor-rules.addRules",
+          "group": "2_workspace",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "postinstall": "node ./scripts/copyRules.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/xmg2024/cursor-rules/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/xmg2024/cursor-rules/issues"
+  }
+}
